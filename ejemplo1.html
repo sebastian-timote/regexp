@@ -1,0 +1,24 @@
+<script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;//obtiene keycode de lettra presionada
+       //string.fromCharCode() obtiene el caracter presionado por el usuario y los alamcena y los almacena 1 a 1
+       //toLowerCase() es para convertir la letra a minuscula
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras =/^[a-zA-Z ]*$/g;//guardamos letras permitidas
+       especiales = "8-37-39-46";//guardamos el keycode teclas especiales permitidas (backspace, flecha izq, flecha der, supr)
+
+       tecla_especial = false
+       for(var i in especiales){//busca si la tecla presionada es una tecla especial
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(!letras.test(tecla) && !tecla_especial){//indexOf()devuelve -1 si no lellega un string
+            return false;
+        }
+        
+    }
+</script>
+
+<input type="text" onkeypress="return soloLetras(event)">
